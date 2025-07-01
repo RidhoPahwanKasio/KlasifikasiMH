@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Makhluk Hidup - Presentasi Interaktif</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .presentation-container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 1s;
+        }
+        
+        .active-slide {
+            display: block;
+        }
+        
+        .animal {
+            position: absolute;
+            transition: all 2s ease-in-out;
+        }
+        
+        #kingdom-animal {
+            width: 100px;
+            bottom: 50px;
+            left: 50px;
+            animation: moveRight 5s infinite alternate;
+        }
+        
+        #kingdom-plant {
+            width: 80px;
+            top: 100px;
+            right: 70px;
+            animation: float 4s infinite ease-in-out;
+        }
+        
+        #kingdom-fungi {
+            width: 60px;
+            bottom: 30px;
+            right: 100px;
+            animation: shake 3s infinite;
+        }
+        
+        #phylum-chordate {
+            width: 120px;
+            top: 150px;
+            left: 100px;
+            animation: swim 6s infinite;
+        }
+        
+        #class-mammal {
+            width: 100px;
+            bottom: 80px;
+            right: 150px;
+            animation: jump 4s infinite;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .classification-chart {
+            width: 100%;
+            height: 300px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chart-item {
+            position: absolute;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            transition: all 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes moveRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(200px); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        @keyframes swim {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(50px) translateY(-10px); }
+            50% { transform: translateX(100px) translateY(0); }
+            75% { transform: translateX(50px) translateY(10px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+        
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-50px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .fact-box {
+            background-color: #e8f4fc;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <h1>Klasifikasi Makhluk Hidup</h1>
+        
+        <!-- Slide 1: Pengantar -->
+        <div class="slide active-slide" id="slide1">
+            <h2>Pengantar Klasifikasi Makhluk Hidup</h2>
+            <p>Klasifikasi makhluk hidup adalah cara mengelompokkan organisme berdasarkan persamaan dan perbedaan karakteristiknya.</p>
+            
+            <div class="classification-chart">
+                <img src="https://cdn.pixabay.com/photo/2016/11/29/08/41/animal-1868627_960_720.png" alt="Animal" class="animal" id="kingdom-animal">
+                <img src="https://cdn.pixabay.com/photo/2012/04/26/18/06/tree-42917_960_720.png" alt="Plant" class="animal" id="kingdom-plant">
+                <img src="https://cdn.pixabay.com/photo/2017/01/31/23/42/decomposition-2027769_960_720.png" alt="Fungi" class="animal" id="kingdom-fungi">
+            </div>
+            
+            <div class="fact-box">
+                <p>Ilmu yang mempelajari klasifikasi makhluk hidup disebut <strong>taksonomi</strong>, dipelopori oleh Carolus Linnaeus.</p>
+            </div>
+        </div>
+        
+        <!-- Slide 2: Tingkatan Taksonomi -->
+        <div class="slide" id="slide2">
+            <h2>Tingkatan Taksonomi</h2>
+            <p>Klasifikasi makhluk hidup terdiri dari beberapa tingkatan (takson):</p>
+            
+            <div class="classification-chart">
+                <div class="chart-item" style="background-color: #e74c3c; width: 90%; top: 10px; left: 5%;">Kingdom (Kerajaan)</div>
+                <div class="chart-item" style="background-color: #f39c12; width: 80%; top: 60px; left: 10%;">Filum/Divisio</div>
+                <div class="chart-item" style="background-color: #f1c40f; width: 70%; top: 110px; left: 15%;">Kelas</div>
+                <div class="chart-item" style="background-color: #2ecc71; width: 60%; top: 160px; left: 20%;">Ordo</div>
+                <div class="chart-item" style="background-color: #3498db; width: 50%; top: 210px; left: 25%;">Famili</div>
+                <div class="chart-item" style="background-color: #9b59b6; width: 40%; top: 260px; left: 30%;">Genus</div>
+                <div class="chart-item" style="background-color: #34495e; width: 30%; top: 310px; left: 35%;">Spesies</div>
+            </div>
+            
+            <div class="fact-box">
+                <p>Contoh klasifikasi manusia: <strong>Animalia (Kingdom) → Chordata (Filum) → Mammalia (Kelas) → Primata (Ordo) → Hominidae (Famili) → Homo (Genus) → sapiens (Spesies)</strong></p>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Kingdom Animalia -->
+        <div class="slide" id="slide3">
+            <h2>Kingdom Animalia (Hewan)</h2>
+            <p>Karakteristik utama hewan:</p>
+            <ul>
+                <li>Multiseluler</li>
+                <li>Memerlukan makanan (heterotrof)</li>
+                <li>Bergerak aktif</li>
+                <li>Memiliki sistem saraf</li>
+            </ul>
+            
+            <div class="classification-chart">
+                <img src="https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_960_720.jpg" alt="Mammal" class="animal" id="class-mammal" style="width: 150px; bottom: 20px; left: 50px;">
+                <img src="https://cdn.pixabay.com/photo/2013/07/13/11/34/fish-157833_960_720.png" alt="Fish" class="animal" id="phylum-chordate" style="width: 120px; top: 50px; right: 70px;">
+            </div>
+            
+            <div class="fact-box">
+                <p>Kingdom Animalia dibagi menjadi sekitar 35 filum, dengan Chordata (hewan bertulang belakang) sebagai salah satu yang paling dikenal.</p>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Kingdom Plantae -->
+        <div class="slide" id="slide4">
+            <h2>Kingdom Plantae (Tumbuhan)</h2>
+            <p>Karakteristik utama tumbuhan:</p>
+            <ul>
+                <li>Multiseluler</li>
+                <li>Autotrof (membuat makanan sendiri melalui fotosintesis)</li>
+                <li>Memiliki dinding sel dari selulosa</li>
+                <li>Tidak dapat bergerak aktif</li>
+            </ul>
+            
+            <div class="classification-chart">
+                <img src="https://cdn.pixabay.com/photo/2017/01/10/03/06/plant-1968358_960_720.png" alt="Flower" class="animal" style="width: 100px; bottom: 50px; left: 100px; animation: rotate 10s infinite linear;">
+                <img src="https://cdn.pixabay.com/photo/2012/04/26/18/06/tree-42917_960_720.png" alt="Tree" class="animal" style="width: 120px; top: 30px; right: 80px; animation: sway 8s infinite alternate;">
+            </div>
+            
+            <div class="fact-box">
+                <p>Tumbuhan terbagi menjadi tumbuhan tidak berpembuluh (lumut) dan tumbuhan berpembuluh (paku dan tumbuhan berbiji).</p>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Kingdom Fungi -->
+        <div class="slide" id="slide5">
+            <h2>Kingdom Fungi (Jamur)</h2>
+            <p>Karakteristik utama jamur:</p>
+            <ul>
+                <li>Uniseluler atau multiseluler</li>
+                <li>Memerlukan makanan (heterotrof)</li>
+                <li>Memiliki dinding sel dari kitin</li>
+                <li>Reproduksi dengan spora</li>
+            </ul>
+            
+            <div class="classification-chart">
+                <img src="https://cdn.pixabay.com/photo/2016/11/29/09/00/mushroom-1868726_960_720.png" alt="Mushroom" class="animal" style="width: 80px; bottom: 40px; left: 120px; animation: grow 5s infinite;">
+                <img src="https://cdn.pixabay.com/photo/2017/01/31/23/42/decomposition-2027769_960_720.png" alt="Mold" class="animal" style="width: 100px; top: 60px; right: 100px; animation: pulse 3s infinite;">
+            </div>
+            
+            <div class="fact-box">
+                <p>Jamur bukan tumbuhan karena tidak berfotosintesis, dan bukan hewan karena tidak dapat bergerak aktif.</p>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Contoh Klasifikasi -->
+        <div class="slide" id="slide6">
+            <h2>Contoh Klasifikasi Hewan</h2>
+            
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                    <img src="https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_960_720.jpg" alt="Cat" style="width: 100%; border-radius: 10px; animation: bounce 2s infinite;">
+                    <p><strong>Kucing:</strong><br>
+                    Kingdom: Animalia<br>
+                    Filum: Chordata<br>
+                    Kelas: Mammalia<br>
+                    Ordo: Carnivora<br>
+                    Famili: Felidae<br>
+                    Genus: Felis<br>
+                    Spesies: F. catus</p>
+                </div>
+                
+                <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                    <img src="https://cdn.pixabay.com/photo/2013/07/13/11/34/fish-157833_960_720.png" alt="Fish" style="width: 100%; border-radius: 10px; animation: swim 4s infinite;">
+                    <p><strong>Ikan Mas:</strong><br>
+                    Kingdom: Animalia<br>
+                    Filum: Chordata<br>
+                    Kelas: Actinopterygii<br>
+                    Ordo: Cypriniformes<br>
+                    Famili: Cyprinidae<br>
+                    Genus: Cyprinus<br>
+                    Spesies: C. carpio</p>
+                </div>
+                
+                <div style="width: 30%; margin-bottom: 20px; text-align: center;">
+                    <img src="https://cdn.pixabay.com/photo/2014/04/03/00/41/eagle-309572_960_720.png" alt="Eagle" style="width: 100%; border-radius: 10px; animation: fly 5s infinite;">
+                    <p><strong>Elang:</strong><br>
+                    Kingdom: Animalia<br>
+                    Filum: Chordata<br>
+                    Kelas: Aves<br>
+                    Ordo: Accipitriformes<br>
+                    Famili: Accipitridae<br>
+                    Genus: Aquila<br>
+                    Spesies: A. chrysaetos</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: Penutup -->
+        <div class="slide" id="slide7">
+            <h2>Kesimpulan</h2>
+            <p>Klasifikasi makhluk hidup membantu kita:</p>
+            <ul>
+                <li>Memahami keragaman kehidupan di Bumi</li>
+                <li>Melihat hubungan kekerabatan antar organisme</li>
+                <li>Mempermudah studi tentang makhluk hidup</li>
+                <li>Melestarikan keanekaragaman hayati</li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <img src="https://cdn.pixabay.com/photo/2016/11/29/08/41/animal-1868627_960_720.png" alt="Animal" style="width: 100px; animation: jump 2s infinite;">
+                <img src="https://cdn.pixabay.com/photo/2012/04/26/18/06/tree-42917_960_720.png" alt="Plant" style="width: 80px; animation: float 3s infinite;">
+                <img src="https://cdn.pixabay.com/photo/2017/01/31/23/42/decomposition-2027769_960_720.png" alt="Fungi" style="width: 60px; animation: shake 4s infinite;">
+            </div>
+            
+            <div class="fact-box" style="margin-top: 30px;">
+                <p>Dengan memahami klasifikasi makhluk hidup, kita dapat lebih menghargai keanekaragaman kehidupan di planet kita.</p>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button id="prevBtn" disabled>Sebelumnya</button>
+            <span id="slide-counter">Slide 1 dari 7</span>
+            <button id="nextBtn">Berikutnya</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slideCounter = document.getElementById('slide-counter');
+            let currentSlide = 0;
+            
+            // Animasi tambahan
+            function addAnimations() {
+                // Rotate animation for plants
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes rotate {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                    @keyframes sway {
+                        0% { transform: rotate(-5deg); }
+                        100% { transform: rotate(5deg); }
+                    }
+                    @keyframes grow {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.2); }
+                        100% { transform: scale(1); }
+                    }
+                    @keyframes pulse {
+                        0% { opacity: 0.7; }
+                        50% { opacity: 1; }
+                        100% { opacity: 0.7; }
+                    }
+                    @keyframes bounce {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-20px); }
+                    }
+                    @keyframes fly {
+                        0% { transform: translateY(0) translateX(0); }
+                        25% { transform: translateY(-20px) translateX(20px); }
+                        50% { transform: translateY(-40px) translateX(0); }
+                        75% { transform: translateY(-20px) translateX(-20px); }
+                        100% { transform: translateY(0) translateX(0); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Initialize presentation
+            function showSlide(n) {
+                slides[currentSlide].classList.remove('active-slide');
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active-slide');
+                
+                // Update buttons
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === slides.length - 1;
+                
+                // Update counter
+                slideCounter.textContent = `Slide ${currentSlide + 1} dari ${slides.length}`;
+                
+                // Trigger animations based on slide
+                triggerSlideAnimations(currentSlide);
+            }
+            
+            function triggerSlideAnimations(slideIndex) {
+                // Reset all animal positions
+                const animals = document.querySelectorAll('.animal');
+                animals.forEach(animal => {
+                    animal.style.animationPlayState = 'paused';
+                });
+                
+                // Start animations for current slide
+                setTimeout(() => {
+                    animals.forEach(animal => {
+                        animal.style.animationPlayState = 'running';
+                    });
+                }, 100);
+                
+                // Special animations for specific slides
+                if (slideIndex === 2) { // Animalia slide
+                    const mammal = document.getElementById('class-mammal');
+                    mammal.style.animation = 'jump 2s infinite';
+                    
+                    const chordate = document.getElementById('phylum-chordate');
+                    chordate.style.animation = 'swim 4s infinite';
+                }
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+            nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    showSlide(currentSlide - 1);
+                } else if (e.key === 'ArrowRight') {
+                    showSlide(currentSlide + 1);
+                }
+            });
+            
+            // Initialize
+            addAnimations();
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>
